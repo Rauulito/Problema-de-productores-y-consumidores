@@ -11,12 +11,12 @@ maxbollos=random.randint(0,100)
 
 
 def producer(name):
-
+    prueba= True
     """Productor"""
 
     count = 1 #mostrador
 
-    while True:
+    while prueba:
 
         q.join() # Espera a task_done () para enviar una señal
 
@@ -26,13 +26,16 @@ def producer(name):
 
         count+=1
 
+        if (count==maxbollos):
+            prueba=False
+ 
 def customer(name):
-
+    prueba= True
     """consumidor"""
 
     count = 1
 
-    while True:
+    while prueba:
 
         baozi = q.get()
 
@@ -43,6 +46,9 @@ def customer(name):
         q.task_done() # Envía una señal después de comer
 
         time.sleep(1)
+
+        if (count==maxbollos):
+            prueba=False
 
 
 
