@@ -3,10 +3,12 @@ from queue import Queue
 from threading import Thread
 
 import time
-
+import random
 # Crear cola
 
 q = Queue(10)
+maxbollos=random.randint(0,100)
+
 
 def producer(name):
 
